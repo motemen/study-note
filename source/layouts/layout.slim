@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    == stylesheet_link_tag 'all'
+    script type="text/x-mathjax-config"
+      | MathJax.Hub.Config({
+      |   tex2jax: {
+      |     inlineMath: [["\\(", "\\)"]],
+      |     displayMath: [["\\[", "\\]"]],
+      |     ignoreClass: "nomath|nolatexmath"
+      |   },
+      |   asciimath2jax: {
+      |     delimiters: [["\\$", "\\$"]],
+      |     ignoreClass: "nomath|noasciimath"
+      |   }
+      | });
+    script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"
+    javascript:
+      document.addEventListener('DOMContentLoaded', MathJax.Hub.TypeSet)
+  body
+    #container
+      article#content
+        == yield
+      aside
+        h1
+          ' Types and Programming Languages

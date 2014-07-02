@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+cd site
+
+bundle
+
+( sleep 3 && open http://localhost:4567/__middleman/sitemap ) &
+
+echo $(dirname $PWD)
+
+bundle exec middleman

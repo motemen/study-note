@@ -1,0 +1,69 @@
+= 3. Untyped Arithmetic Expressions
+:math: latexmath
+:toc:
+:sectanchors:
+
+型のない言語をフォーマルに定義しておこうって話。
+
+== 3.2 Syntax
+
+ここでは文法的な定義をしているだけなので、その意味というのは考えない。とりあえずここでは人間の考える（+true+/+false+/+if+
+だけの）計算のメンタルモデルがうまいこと形式的に表現できるように注意深く定義してやる。「意味」を考えるのはそのあと。
+
+== 3.5 Evaluation
+
+意味論（semantics）というのはこうやって作りあげた形式的な言語に、どうやって人間が想定するような「意味」を与えるか、というもの。
+これも形式的に与えることができる。
+
+* Operational
+* Denotational
+* Axiom
+
+=== Ex. 3.5.13
+
+項のサイズにおける帰納法により示す。
+
+[math]
+++++
+t = \mathrm{if} \; t_1 \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3
+++++
+
+の場合だけ考えればよい。それ以外の場合は元の証明と同様。
+
+[math]
+++++
+t_1 \longrightarrow t_1', \; t_2 \longrightarrow t_2'
+++++
+
+に対し、 *E-IF* と *E-FUNNY2* により
+
+[math]
+++++
+t \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3 = t_A \\
+t \longrightarrow \mathrm{if} \; t_1 \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3 = t_B
+++++
+
+であり、math:[t] から導出されるのはこの math:[t_A, t_B] しか存在しない。これらに関して
+
+[math]
+++++
+t_A \longrightarrow^* u_A \\
+t_B \longrightarrow^* u_B
+++++
+（math:[u_A, u_B] は値）
+
+であるとき、math:[u_A = u_B] であることを示す。
+
+先の導出について、*E-IF* と *E-FUNNY2* をそれぞれもう一方に適用すると
+
+[math]
+++++
+t_A \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3 \\
+t_B \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3
+++++
+
+であるので、帰納法の仮定より math:[u_A = u_B]。
+
+---
+
+math:[succ(false)] はこれいじょう導出できない（normal form である）が値ではなくエラー。こういう項を +stuck+ と呼ぶ。
