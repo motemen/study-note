@@ -1,3 +1,5 @@
+$code-color: #338;
+
 @import 'bootstrap';
 
 body {
@@ -58,10 +60,10 @@ aside {
 
     h1 {
         font-family: "Helvetica Neue", sans-serif;
-        font-size: 120%;
+        font-size: 115%;
         font-weight: normal;
-        color: darken($aside-color, 30%);
-        line-height: 1.4;
+        color: #888;
+        line-height: 1.5;
     }
 }
 
