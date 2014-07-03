@@ -1,0 +1,134 @@
+<!DOCTYPE html><html><head><link href="../stylesheets/all.css" rel="stylesheet" type="text/css" /><script type="text/x-mathjax-config">MathJax.Hub.Config({  tex2jax: {    inlineMath: [["\\(", "\\)"]],    displayMath: [["\\[", "\\]"]],    ignoreClass: "nomath|nolatexmath"  },  asciimath2jax: {    delimiters: [["\\$", "\\$"]],    ignoreClass: "nomath|noasciimath"  }});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="text/javascript"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', MathJax.Hub.TypeSet)</script></head><body><div id="container"><article id="content"><h1>3. Untyped Arithmetic Expressions</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>型のない言語をフォーマルに定義しておこうって話。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_1_introduction"><a class="anchor" href="#_3_1_introduction"></a>3.1 Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ここで紹介されてる文法では <code>succ true</code> みたいな一見意味のない項も可能なわけで、人間はこれを見ればオイオイ、
+と思うけど文法的にはまったく問題ない。こういう誤りを防ぐのが型システムでもある。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_2_syntax"><a class="anchor" href="#_3_2_syntax"></a>3.2 Syntax</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ここでは文法的な定義をしているだけなので、その意味というのは考えない。とりあえずここでは人間の考える（<code>true</code>/<code>false</code>/<code>if</code>
+だけの）計算のメンタルモデルがうまいこと形式的に表現できるように注意深く定義してやる。「意味」を考えるのはそのあと。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_5_evaluation"><a class="anchor" href="#_3_5_evaluation"></a>3.5 Evaluation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>意味論（semantics）というのはこうやって作りあげた形式的な言語に、どうやって人間が想定するような「意味」を与えるか、というもの。
+これも形式的に与えることができる。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Operational</p>
+<div class="ulist">
+<ul>
+<li>
+<p>項に対する操作を与えるもの。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Denotational</p>
+<div class="ulist">
+<ul>
+<li>
+<p>数学的な対象を「意味」として、項から対象への関数を考えるようなもの。Domain theory と関係があるらしい。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Axiomatic</p>
+<div class="ulist">
+<ul>
+<li>
+<p>不変条件（invariant）と関係があるらしい？　なんとなく分かるような気はするけどよくわからない。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_def_3_5_2"><a class="anchor" href="#_def_3_5_2"></a>Def. 3.5.2</h3>
+<div class="paragraph">
+<p>何か直感的に分からない。ある規則を満たす（satisfy）関係は、その規則のすべてのインスタンスにおいて、結論（conculusion）がその関係に含まれているか、または前提（premise）のいずれかが関係に含まれていない。この後半がよくわからなくて、前提が関係に含まれているとどう不味いんだろう……。少なくとも今考えている言語はシンプルすぎていい具体例が挙げられなそう。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ex_3_5_13"><a class="anchor" href="#_ex_3_5_13"></a>Ex. 3.5.13</h3>
+<div class="paragraph">
+<p>項のサイズにおける帰納法により示す。</p>
+</div>
+<div class="mathblock">
+<div class="content">
+\[t = \mathrm{if} \; t_1 \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3\]
+</div>
+</div>
+<div class="paragraph">
+<p>の場合だけ考えればよい。それ以外の場合は元の証明と同様。</p>
+</div>
+<div class="mathblock">
+<div class="content">
+\[t_1 \longrightarrow t_1', \; t_2 \longrightarrow t_2'\]
+</div>
+</div>
+<div class="paragraph">
+<p>に対し、 <strong>E-IF</strong> と <strong>E-FUNNY2</strong> により</p>
+</div>
+<div class="mathblock">
+<div class="content">
+\[t \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3 = t_A \\
+t \longrightarrow \mathrm{if} \; t_1 \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3 = t_B\]
+</div>
+</div>
+<div class="paragraph">
+<p>であり、\(t\) から導出されるのはこの \(t_A, t_B\) しか存在しない。これらに関して</p>
+</div>
+<div class="mathblock">
+<div class="content">
+\[t_A \longrightarrow^* u_A \\
+t_B \longrightarrow^* u_B\]
+</div>
+</div>
+<div class="paragraph">
+<p>（\(u_A, u_B\) は値）</p>
+</div>
+<div class="paragraph">
+<p>であるとき、\(u_A = u_B\) であることを示す。</p>
+</div>
+<div class="paragraph">
+<p>先の導出について、<strong>E-IF</strong> と <strong>E-FUNNY2</strong> をそれぞれもう一方に適用すると</p>
+</div>
+<div class="mathblock">
+<div class="content">
+\[t_A \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3 \\
+t_B \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3\]
+</div>
+</div>
+<div class="paragraph">
+<p>であるので、帰納法の仮定より \(u_A = u_B\)。</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>succ(false)</code> はこれいじょう導出できない（normal form である）が値ではなくエラー。こういう項を <code>stuck</code> と呼ぶ。</p>
+</div>
+</div>
+</div>
+</div></article><aside><h1>Types and Programming Languages </h1></aside></div></body></html>

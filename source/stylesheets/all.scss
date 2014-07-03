@@ -1,0 +1,78 @@
+$code-color: #338;
+
+@import 'bootstrap';
+
+body {
+    font-size: 17px;
+    font-family: "Lucida Grande", sans-serif;
+    line-height: 1.9;
+    color: #444;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+h1, h2, h3, h4 {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    color: #454569;
+}
+
+h2, h3 {
+    margin-top: 1.5em;
+}
+
+h2 {
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.5em;
+}
+
+li > p {
+    margin: 0;
+}
+
+#container {
+    @include make-row;
+    margin: 0;
+}
+
+$padding-top: 20px;
+$content-flex: 9;
+
+article {
+    @include make-md-column($content-flex);
+    @include make-md-column-push(12 - $content-flex);
+    padding: $padding-top 7%;
+    padding-right: 20%;
+}
+
+$aside-color: #DDDDE0;
+
+aside {
+    @include make-md-column(12 - $content-flex);
+    @include make-md-column-pull($content-flex);
+    background-color: $aside-color;
+    padding: $padding-top 3%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+
+    h1 {
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 115%;
+        font-weight: normal;
+        color: #888;
+        line-height: 1.5;
+    }
+}
+
+.mathblock {
+    padding: 0.5em 0;
+    margin: 1em 0;
+    background-color: #F7F7F7;
+}

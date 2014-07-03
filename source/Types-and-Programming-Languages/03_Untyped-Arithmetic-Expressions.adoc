@@ -1,0 +1,81 @@
+= 3. Untyped Arithmetic Expressions
+:math: latexmath
+:toc:
+:sectanchors:
+
+型のない言語をフォーマルに定義しておこうって話。
+
+== 3.1 Introduction
+
+ここで紹介されてる文法では +succ true+ みたいな一見意味のない項も可能なわけで、人間はこれを見ればオイオイ、
+と思うけど文法的にはまったく問題ない。こういう誤りを防ぐのが型システムでもある。
+
+== 3.2 Syntax
+
+ここでは文法的な定義をしているだけなので、その意味というのは考えない。とりあえずここでは人間の考える（+true+/+false+/+if+
+だけの）計算のメンタルモデルがうまいこと形式的に表現できるように注意深く定義してやる。「意味」を考えるのはそのあと。
+
+== 3.5 Evaluation
+
+意味論（semantics）というのはこうやって作りあげた形式的な言語に、どうやって人間が想定するような「意味」を与えるか、というもの。
+これも形式的に与えることができる。
+
+* Operational
+** 項に対する操作を与えるもの。
+* Denotational
+** 数学的な対象を「意味」として、項から対象への関数を考えるようなもの。Domain theory と関係があるらしい。
+* Axiomatic
+** 不変条件（invariant）と関係があるらしい？　なんとなく分かるような気はするけどよくわからない。
+
+=== Def. 3.5.2
+
+何か直感的に分からない。ある規則を満たす（satisfy）関係は、その規則のすべてのインスタンスにおいて、結論（conculusion）がその関係に含まれているか、または前提（premise）のいずれかが関係に含まれていない。この後半がよくわからなくて、前提が関係に含まれているとどう不味いんだろう……。少なくとも今考えている言語はシンプルすぎていい具体例が挙げられなそう。
+
+=== Ex. 3.5.13
+
+項のサイズにおける帰納法により示す。
+
+[math]
+++++
+t = \mathrm{if} \; t_1 \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3
+++++
+
+の場合だけ考えればよい。それ以外の場合は元の証明と同様。
+
+[math]
+++++
+t_1 \longrightarrow t_1', \; t_2 \longrightarrow t_2'
+++++
+
+に対し、 *E-IF* と *E-FUNNY2* により
+
+[math]
+++++
+t \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3 = t_A \\
+t \longrightarrow \mathrm{if} \; t_1 \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3 = t_B
+++++
+
+であり、math:[t] から導出されるのはこの math:[t_A, t_B] しか存在しない。これらに関して
+
+[math]
+++++
+t_A \longrightarrow^* u_A \\
+t_B \longrightarrow^* u_B
+++++
+（math:[u_A, u_B] は値）
+
+であるとき、math:[u_A = u_B] であることを示す。
+
+先の導出について、*E-IF* と *E-FUNNY2* をそれぞれもう一方に適用すると
+
+[math]
+++++
+t_A \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3 \\
+t_B \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else} \; t_3
+++++
+
+であるので、帰納法の仮定より math:[u_A = u_B]。
+
+---
+
+`succ(false)` はこれいじょう導出できない（normal form である）が値ではなくエラー。こういう項を +stuck+ と呼ぶ。
