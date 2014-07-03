@@ -1491,7 +1491,7 @@ ol {
     margin-bottom: 0; }
 
 /* line 167, /Users/motemen/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_type.scss */
-.list-unstyled, .list-inline {
+.list-unstyled, .list-inline, aside .textbook ul.links, #sitemap {
   padding-left: 0;
   list-style: none; }
 
@@ -6643,26 +6643,31 @@ body {
   box-sizing: border-box; }
 
 /* line 19, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
-h1, h2, h3, h4 {
+h1, h2, h3 {
   font-family: Georgia, serif;
-  font-weight: bold;
-  color: #454569; }
+  font-weight: bold; }
 
-/* line 25, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
-h2, h3 {
-  margin-top: 1.5em; }
-
-/* line 29, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 24, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 h2 {
+  color: #454569;
   border-bottom: 1px solid #DDD;
   padding-bottom: 0.3em;
   margin-bottom: 0.5em; }
 
-/* line 35, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 31, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+h3 {
+  color: #555;
+  font-family: "Open Sans", sans-serif; }
+
+/* line 36, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+h2, h3 {
+  margin-top: 1.5em; }
+
+/* line 40, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 li > p {
   margin: 0; }
 
-/* line 39, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 44, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 #container {
   margin-left: -15px;
   margin-right: -15px;
@@ -6675,7 +6680,7 @@ li > p {
   #container:after {
     clear: both; }
 
-/* line 47, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 52, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 article {
   position: relative;
   min-height: 1px;
@@ -6684,16 +6689,16 @@ article {
   padding: 20px 7%;
   padding-right: 20%; }
   @media (min-width: 992px) {
-    /* line 47, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 52, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     article {
       float: left;
       width: 75%; } }
   @media (min-width: 992px) {
-    /* line 47, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 52, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     article {
       left: 25%; } }
 
-/* line 56, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 61, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 aside {
   position: relative;
   min-height: 1px;
@@ -6705,23 +6710,42 @@ aside {
   top: 0;
   bottom: 0; }
   @media (min-width: 992px) {
-    /* line 56, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 61, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     aside {
       float: left;
       width: 25%; } }
   @media (min-width: 992px) {
-    /* line 56, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 61, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     aside {
       right: 75%; } }
-  /* line 65, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+  /* line 70, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
   aside h1 {
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 115%;
     font-weight: normal;
     color: #888;
     line-height: 1.5; }
+  /* line 80, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+  aside .textbook ul.links {
+    width: 80%;
+    font-size: 80%;
+    line-height: 1.1; }
+    /* line 87, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    aside .textbook ul.links li {
+      margin-top: 1em; }
+    /* line 91, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    aside .textbook ul.links a {
+      text-decoration: none; }
+    /* line 95, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    aside .textbook ul.links img {
+      max-width: 150px;
+      margin: 10px 0; }
 
-/* line 74, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 103, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+#sitemap {
+  font-size: 80%; }
+
+/* line 108, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 .mathblock {
   padding: 0.5em 0;
   margin: 1em 0;
