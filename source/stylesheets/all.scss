@@ -16,20 +16,25 @@ body {
 }
 
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
     font-family: Georgia, serif;
     font-weight: bold;
+}
+
+h2 {
     color: #454569;
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    color: #555;
+    font-family: "Open Sans", sans-serif;
 }
 
 h2, h3 {
     margin-top: 1.5em;
-}
-
-h2 {
-    border-bottom: 1px solid #DDD;
-    padding-bottom: 0.3em;
-    margin-bottom: 0.5em;
 }
 
 li > p {
@@ -63,12 +68,41 @@ aside {
     bottom: 0;
 
     h1 {
-        font-family: "Helvetica Neue", sans-serif;
+        font-family: "Open Sans", "Helvetica Neue", sans-serif;
+
         font-size: 115%;
         font-weight: normal;
         color: #888;
         line-height: 1.5;
     }
+
+    .textbook {
+        ul.links {
+            @extend .list-unstyled;
+
+            width: 80%;
+            font-size: 80%;
+            line-height: 1.1;
+
+            li {
+                margin-top: 1em;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            img {
+                max-width: 150px;
+                margin: 10px 0;
+            }
+        }
+    }
+}
+
+#sitemap {
+    @extend .list-unstyled;
+    font-size: 80%;
 }
 
 .mathblock {

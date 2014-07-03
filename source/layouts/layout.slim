@@ -15,6 +15,7 @@ html
       |   }
       | });
     script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"
+    link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'
     javascript:
       document.addEventListener('DOMContentLoaded', MathJax.Hub.TypeSet)
   body
@@ -22,5 +23,21 @@ html
       article#content
         == yield
       aside
-        h1
-          ' Types and Programming Languages
+        - textbook = current_page.metadata[:options][:textbook]
+        - if textbook
+          .textbook
+            h1.title
+              = textbook[:title]
+            ul.links
+              - textbook[:link_htmls].each do |link_html|
+                li
+                  == link_html
+        ul#sitemap
+          - sitemap.resources.map(&:path).select { |p| /\.html$/ === p }.group_by { |p| p[%r([^/]+)] }.each do |dir,paths|
+            li
+              strong
+                = dir.gsub(/-/, ' ')
+              ul
+                - paths.each do |path|
+                  li
+                    == link_to path.split('/').last.sub(/\.html$/, ''), "/#{path}"
