@@ -19,7 +19,7 @@ body {
 h1, h2, h3, h4 {
     font-family: Georgia, serif;
     font-weight: bold;
-    color: #444;
+    color: #454569;
 }
 
 h2, h3 {
@@ -30,6 +30,10 @@ h2 {
     border-bottom: 1px solid #DDD;
     padding-bottom: 0.3em;
     margin-bottom: 0.5em;
+}
+
+li > p {
+    margin: 0;
 }
 
 #container {
