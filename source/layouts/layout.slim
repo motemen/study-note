@@ -1,6 +1,12 @@
+- textbook = current_page.metadata[:options][:textbook]
 doctype html
 html
   head
+    title
+      = current_resource.metadata[:page]['title']
+      - if textbook
+        = " - #{textbook[:title]}"
+    meta name="viewport" content="width=device-width"
     == stylesheet_link_tag 'all'
     script type="text/x-mathjax-config"
       | MathJax.Hub.Config({
@@ -23,7 +29,6 @@ html
       article#content
         == yield
       aside
-        - textbook = current_page.metadata[:options][:textbook]
         - if textbook
           .textbook
             h1.title
