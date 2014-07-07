@@ -110,6 +110,16 @@ aside {
   }
 }
 
+dt {
+    font-size: 105%;
+    margin-bottom: 0.2em;
+    color: #666;
+}
+
+dd {
+    margin-left: 1em;
+}
+
 #sitemap {
   @extend .list-unstyled;
   font-size: 80%;
@@ -119,4 +129,11 @@ aside {
   padding: 0.5em 0;
   margin: 1em 0;
   background-color: #F7F7F7;
+}
+
+.exampleblock {
+  font-size: 95%;
+  margin: 1em 0;
+  border: 1px solid #DDD;
+  padding: 1em;
 }
