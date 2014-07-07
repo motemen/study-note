@@ -6753,11 +6753,28 @@ aside {
       margin: 10px 0; }
 
 /* line 113, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+dt {
+  font-size: 105%;
+  margin-bottom: 0.2em;
+  color: #666; }
+
+/* line 119, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+dd {
+  margin-left: 1em; }
+
+/* line 123, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 #sitemap {
   font-size: 80%; }
 
-/* line 118, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 128, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 .mathblock {
   padding: 0.5em 0;
   margin: 1em 0;
   background-color: #F7F7F7; }
+
+/* line 134, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+.exampleblock {
+  font-size: 95%;
+  margin: 1em 0;
+  border: 1px solid #DDD;
+  padding: 1em; }

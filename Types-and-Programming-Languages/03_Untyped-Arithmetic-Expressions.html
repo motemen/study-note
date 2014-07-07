@@ -31,48 +31,42 @@
 <p>意味論（semantics）というのはこうやって作りあげた形式的な言語に、どうやって人間が想定するような「意味」を与えるか、というもの。
 これも形式的に与えることができる。</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Operational</p>
-<div class="ulist">
-<ul>
-<li>
-<p>項に対する操作を与えるもの。</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Denotational</p>
-<div class="ulist">
-<ul>
-<li>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Operational semantics</dt>
+<dd>
+<p>項に対する操作を定義することで、項の意味を導くもの。この本ではこれを使う。</p>
+</dd>
+<dt class="hdlist1">Denotational semantics</dt>
+<dd>
 <p>数学的な対象を「意味」として、項から対象への関数を考えるようなもの。Domain theory と関係があるらしい。</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Axiomatic</p>
-<div class="ulist">
-<ul>
-<li>
+</dd>
+<dt class="hdlist1">Axiomatic semantics</dt>
+<dd>
 <p>不変条件（invariant）と関係があるらしい？　なんとなく分かるような気はするけどよくわからない。</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+</dd>
+</dl>
 </div>
 <div class="sect2">
 <h3 id="_def_3_5_2"><a class="anchor" href="#_def_3_5_2"></a>Def. 3.5.2</h3>
 <div class="paragraph">
 <p>何か直感的に分からない。ある規則を満たす（satisfy）関係は、その規則のすべてのインスタンスにおいて、結論（conculusion）がその関係に含まれているか、または前提（premise）のいずれかが関係に含まれていない。この後半がよくわからなくて、前提が関係に含まれているとどう不味いんだろう……。少なくとも今考えている言語はシンプルすぎていい具体例が挙げられなそう。</p>
 </div>
+<hr>
+<div class="paragraph">
+<p>導出（derivation）というのは一つの evaluation statement \(t \longrightarrow t'\) を言語のルール（<strong>E-IFTRUE</strong> とか）から（直感的には、「縦に」）導くもの。矢印を横につなげていく操作ではない。</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_ex_3_5_13"><a class="anchor" href="#_ex_3_5_13"></a>Ex. 3.5.13</h3>
+<h3 id="_thm_3_5_7"><a class="anchor" href="#_thm_3_5_7"></a>Thm 3.5.7</h3>
+<div class="paragraph">
+<p>今のシンプルな言語では、全ての normal form は value であるけれど、今後そうとは限らない（run-time error となるものもある）。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ex_3_5_13"><a class="anchor" href="#_ex_3_5_13"></a>Ex. 3-5-13</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
 <p>項のサイズにおける帰納法により示す。</p>
 </div>
@@ -125,9 +119,42 @@ t_B \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else
 <div class="paragraph">
 <p>であるので、帰納法の仮定より \(u_A = u_B\)。</p>
 </div>
-<hr>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ex_3_5_14"><a class="anchor" href="#_ex_3_5_14"></a>Ex. 3.5.14</h3>
 <div class="paragraph">
 <p><code>succ(false)</code> はこれいじょう導出できない（normal form である）が値ではなくエラー。こういう項を <code>stuck</code> と呼ぶ。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ex_3_5_16"><a class="anchor" href="#_ex_3_5_16"></a>Ex. 3.5.16</h3>
+<div class="paragraph">
+<p><code>badnat</code>, <code>badbool</code>, <code>wrong</code> による <code>stuck</code> の表現。</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>とにかく何でも評価することができて、最後には値か、そうでなければ（= <code>stuck</code> となる場合）<code>wrong</code> に評価される、という風になっていればよいと思う。なので、</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>すべての値または <code>wrong</code> を除く項が評価可能であればよい。</p>
+</li>
+<li>
+<p>構造的帰納で証明できそうということで省略。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ex_3_5_17"><a class="anchor" href="#_ex_3_5_17"></a>Ex. 3.5.17</h3>
+<div class="paragraph">
+<p>まだやってない。</p>
 </div>
 </div>
 </div>
