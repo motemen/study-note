@@ -1491,7 +1491,7 @@ ol {
     margin-bottom: 0; }
 
 /* line 167, /Users/motemen/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_type.scss */
-.list-unstyled, .list-inline, aside .textbook ul.links, #sitemap {
+.list-unstyled, .list-inline, aside .sitemap, aside .textbook ul.links {
   padding-left: 0;
   list-style: none; }
 
@@ -6705,6 +6705,10 @@ article {
       padding-right: 20%; } }
 
 /* line 66, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+.sitemap {
+  font-size: 110%; }
+
+/* line 70, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 aside {
   position: relative;
   min-height: 1px;
@@ -6713,66 +6717,65 @@ aside {
   background-color: #dddde0;
   padding: 20px 7%; }
   @media (min-width: 992px) {
-    /* line 66, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 70, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     aside {
       float: left;
       width: 25%; } }
   @media (min-width: 992px) {
-    /* line 66, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 70, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     aside {
       right: 75%; } }
   @media (min-width: 992px) {
-    /* line 66, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 70, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     aside {
       position: fixed;
       top: 0;
       bottom: 0;
       padding-left: 3%;
       overflow: scroll; } }
-  /* line 80, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+  /* line 84, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
   aside h1 {
     font-family: "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 115%;
     font-weight: normal;
     color: #888;
     line-height: 1.5; }
-  /* line 90, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+  /* line 93, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+  aside .sitemap {
+    font-size: 80%; }
+  /* line 99, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
   aside .textbook ul.links {
     width: 80%;
     font-size: 80%;
     line-height: 1.1; }
-    /* line 97, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 106, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     aside .textbook ul.links li {
       margin-top: 1em; }
-    /* line 101, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 110, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     aside .textbook ul.links a {
       text-decoration: none; }
-    /* line 105, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+    /* line 114, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
     aside .textbook ul.links img {
       max-width: 150px;
       margin: 10px 0; }
 
-/* line 113, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 122, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 dt {
   font-size: 105%;
   margin-bottom: 0.2em;
   color: #666; }
 
-/* line 119, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 128, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 dd {
   margin-left: 1em; }
 
-/* line 123, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
-#sitemap {
-  font-size: 80%; }
-
-/* line 128, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 132, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 .mathblock {
   padding: 0.5em 0;
   margin: 1em 0;
   background-color: #F7F7F7; }
 
-/* line 134, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 138, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 .exampleblock {
   font-size: 95%;
   margin: 1em 0;
