@@ -23,6 +23,10 @@ h1, h2, h3 {
   font-weight: bold;
 }
 
+h1 {
+    margin-bottom: 0.8em;
+}
+
 h2 {
   color: #454569;
   border-bottom: 1px solid #DDD;
@@ -71,20 +75,24 @@ aside {
   @include make-md-column(12 - $content-flex);
   @include make-md-column-pull($content-flex);
   background-color: $aside-color;
-  padding: $padding-top $padding-side;
+  padding: $padding-top 2%;
 
   @media (min-width: $screen-md-min) {
     position: fixed;
     top: 0;
     bottom: 0;
-    padding-left: 3%;
     overflow: scroll;
+  }
+
+  @media (max-width: $screen-sm-max) {
+      padding-left: 12%;
+      padding-right: 12%;
   }
 
   h1 {
     font-family: "Open Sans", "Helvetica Neue", sans-serif;
 
-    font-size: 115%;
+    font-size: 110%;
     font-weight: normal;
     color: #888;
     line-height: 1.5;
@@ -92,7 +100,10 @@ aside {
 
   .sitemap {
     @extend .list-unstyled;
-    font-size: 80%;
+    font-size: 90%;
+    padding-top: 0.8em;
+    margin-top: 1em;
+    border-top: 1px solid darken($aside-color, 15%);
   }
 
   .textbook {
@@ -112,7 +123,7 @@ aside {
       }
 
       img {
-        max-width: 150px;
+        max-width: 180px;
         margin: 10px 0;
       }
     }
