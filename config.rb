@@ -13,6 +13,8 @@ set :asciidoc_attributes, %w(sectanchors)
 set :relative_links, true
 activate :relative_assets
 
+activate :directory_indexes
+
 page '/Types-and-Programming-Languages/*',
   textbook: {
     title: 'Types and Programming Languages',
