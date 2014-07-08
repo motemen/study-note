@@ -37,13 +37,13 @@ html
               - textbook[:link_htmls].each do |link_html|
                 li
                   == link_html
-        ul#sitemap
+        ul.sitemap
           - sitemap.resources.map(&:path).select { |p| /\.html$/ === p }.group_by { |p| p[%r([^/]+)] }.each do |dir,paths|
             li
               strong
                 = dir.gsub(/-/, ' ')
               ul
-                - paths.each do |path|
+                - paths.reject { |p| /\bindex\.\w+$/ === p }.each do |path|
                   li
                     == link_to path.split('/').last.sub(/\.html$/, ''), "/#{path}"
     javascript:

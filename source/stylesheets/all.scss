@@ -63,6 +63,10 @@ article {
 
 $aside-color: #DDDDE0;
 
+.sitemap {
+  font-size: 110%;
+}
+
 aside {
   @include make-md-column(12 - $content-flex);
   @include make-md-column-pull($content-flex);
@@ -84,6 +88,11 @@ aside {
     font-weight: normal;
     color: #888;
     line-height: 1.5;
+  }
+
+  .sitemap {
+    @extend .list-unstyled;
+    font-size: 80%;
   }
 
   .textbook {
@@ -118,11 +127,6 @@ dt {
 
 dd {
     margin-left: 1em;
-}
-
-#sitemap {
-  @extend .list-unstyled;
-  font-size: 80%;
 }
 
 .mathblock {
