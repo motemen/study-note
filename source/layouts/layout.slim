@@ -1,11 +1,9 @@
-- textbook = current_page.metadata[:options][:textbook]
+- textbook = data.textbooks[current_resource.path.split('/').first]
 doctype html
 html
   head
     title
-      = current_resource.metadata[:page]['title']
-      - if textbook
-        = " - #{textbook[:title]}"
+      = [ current_resource.metadata[:page]['title'], textbook && textbook['title'] ].compact.join(' - ')
     meta name="viewport" content="width=device-width"
     == stylesheet_link_tag 'all'
     script type="text/x-mathjax-config"
@@ -32,20 +30,22 @@ html
         - if textbook
           .textbook
             h1.title
-              = textbook[:title]
+              = textbook['title']
             ul.links
-              - textbook[:link_htmls].each do |link_html|
+              - textbook['html_links'].each do |html|
                 li
-                  == link_html
+                  == html
         ul.sitemap
-          - sitemap.resources.map(&:path).select { |p| /\.html$/ === p }.group_by { |p| p[%r([^/]+)] }.each do |dir,paths|
+          - each_dir do |dir,resources|
             li
               strong
-                = dir.gsub(/-/, ' ')
+                a href="/#{dir}/"
+                  = data.textbooks[dir]['title']
               ul
-                - paths.reject { |p| /\bindex\.\w+$/ === p }.each do |path|
+                - resources.each do |res|
                   li
-                    == link_to path.split('/').last.sub(/\.html$/, ''), "/#{path}"
+                    == link_to res.metadata[:page]['title'], "/#{res.path}"
+
     javascript:
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -1,8 +1,8 @@
 h1
   | Types and Programming Languages
 ul.sitemap
-  - sitemap.resources.map(&:path).select { |p| /\.html$/ === p }.group_by { |p| p[%r([^/]+)] }.each do |dir,paths|
+  - each_dir do |dir,resources|
     - if dir == 'Types-and-Programming-Languages'
-      - paths.reject { |p| %r(/index\.\w+$) === p }.each do |path|
+      - resources.each do |res|
         li
-          == link_to path.split('/').last.sub(/\.html$/, '').sub('_', '. ').gsub('-', ' '), "/#{path}"
+          == link_to res.metadata[:page]['title'], "/#{res.path}"
