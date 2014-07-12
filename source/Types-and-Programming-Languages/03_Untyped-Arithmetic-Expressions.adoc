@@ -15,10 +15,10 @@
 ここでは文法的な定義をしているだけなので、その意味というのは考えない。とりあえずここでは人間の考える（+true+/+false+/+if+
 だけの）計算のメンタルモデルがうまいこと形式的に表現できるように注意深く定義してやる。「意味」を考えるのはそのあと。
 
-== 3.5 Evaluation
+== 3.4 Semantic Styles
 
-意味論（semantics）というのはこうやって作りあげた形式的な言語に、どうやって人間が想定するような「意味」を与えるか、というもの。
-これも形式的に与えることができる。
+意味論（semantics）というのはこうやって作りあげた形式的な言語に、どうやって人間が想定するような「意味」を与えるか（どう評価するか）、というもの。
+これも厳密に与えることができる。
 
 意味論にもいくつかの方法がある:
 
@@ -27,7 +27,9 @@ Operational semantics::
 Denotational semantics::
 数学的な対象を「意味」として、項から対象への関数を考えるようなもの。Domain theory と関係があるらしい。
 Axiomatic semantics::
-不変条件（invariant）と関係があるらしい？　なんとなく分かるような気はするけどよくわからない。
+不変条件（invariant）と関係があるらしい？　項の評価じゃなくルール自体をその意味とする？　なんとなくイメージできる気はするけど具体的に分からないのでスルー。
+
+== 3.5 Evaluation
 
 === Def. 3.5.2
 
@@ -45,7 +47,7 @@ Axiomatic semantics::
 
 ====
 
-項のサイズにおける帰納法により示す。
+構造的帰納法により示す。
 
 [math]
 ++++
@@ -59,7 +61,7 @@ t = \mathrm{if} \; t_1 \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3
 t_1 \longrightarrow t_1', \; t_2 \longrightarrow t_2'
 ++++
 
-に対し、 *E-IF* と *E-FUNNY2* により
+に対し、 *E-If* と *E-Funny2* により
 
 [math]
 ++++
@@ -92,7 +94,7 @@ t_B \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else
 
 === Ex. 3.5.14
 
-`succ(false)` はこれいじょう導出できない（normal form である）が値ではなくエラー。こういう項を +stuck+ と呼ぶ。
++succ(false)+ はこれいじょう導出できない（normal form である）が値ではなくエラー。こういう項を +stuck+ と呼ぶ。
 
 === Ex. 3.5.16
 
@@ -109,4 +111,57 @@ t_B \longrightarrow \mathrm{if} \; t_1' \; \mathrm{then} \; t_2' \; \mathrm{else
 
 === Ex. 3.5.17
 
-まだやってない。
+Operational semantics のもう一つの一般的なスタイル、_big-step_ (_natural semantics_) について。項が最終的にどんな値に評価されるか、という観点の関係 math:[\Downarrow] を用意し、それに基いた導出をおこなうスタイル。ちなみにこれまでやってきたのは _small-step_ である。ここでこの 2 つのスタイルが一致すること、つまり math:[t \longrightarrow^* v \iff t \Downarrow v] を示す。
+
+====
+
+構造的帰納法により示す。
+
+[math]
+++++
+t = \mathrm{if} \; t_1 \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3
+++++
+
+の場合だけを考える。
+
+math:[\Longleftarrow] について。
+
+math:[t \Downarrow v] とする。これを導出できたのは *B-IfTrue* か *B-IfFalse* のどちらかである。
+
+*B-IfTrue* の場合を考えると、math:[t_1 \Downarrow \mathrm{true}], math:[t_2 \Downarrow v] である。すると帰納法の仮定より
+[math]
+++++
+t_1 \longrightarrow^* \mathrm{true} \\
+t_2 \longrightarrow^* v
+++++
+
+math:[t_1 \longrightarrow^* \mathrm{true}] のとき math:[\mathrm{if} \; t_1 \; \mathrm{then} \; t_2 \; \mathrm{else} \; t_3 \longrightarrow^* t_2] であることはすぐに示せる。結局
+[math]
+++++
+t \longrightarrow^* t_2 \longrightarrow^* v
+++++
+
+*B-IfFalse* の場合も同様。
+
+math:[\Longrightarrow] について。
+
+math:[t \longrightarrow^* v] とする。
+
+math:[t_1 \longrightarrow^* \mathrm{true}] とすると math:[t \longrightarrow^* t_2]。ここで
+
+[math]
+++++
+t \longrightarrow^* t_2 \longrightarrow^* v_2
+++++
+
+とすると定理 3.5.11 より math:[v_2 = v]。よって
+
+[math]
+++++
+t_1 \Downarrow \mathrm{true} \\
+t_2 \Downarrow v
+++++
+
+*B-IfTrue* より math:[t \Downarrow v]。math:[t_1 \longrightarrow^* \mathrm{false}] の場合も同様。それ以外の場合 math:[t] は stuck する。
+
+====
