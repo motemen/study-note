@@ -24,11 +24,14 @@ h1, h2, h3 {
 }
 
 h1 {
-    margin-bottom: 1em;
-    font-size: 350%;
-    color: #555;
-    line-height: 1.6;
-    font-family: "Roboto Slab";
+  margin-bottom: 1em;
+  font-size: 350%;
+  @media (max-width: $screen-sm-max) {
+    font-size: 250%;
+  }
+  color: #555;
+  line-height: 1.6;
+  font-family: "Roboto Slab";
 }
 
 h2 {
@@ -36,6 +39,9 @@ h2 {
   border-bottom: 1px solid #DDD;
   padding-bottom: 0.3em;
   margin-bottom: 0.5em;
+  @media (max-width: $screen-sm-max) {
+    font-size: 200%;
+  }
 }
 
 h3 {
@@ -117,7 +123,9 @@ aside {
 
   .sitemap {
     @extend .list-unstyled;
-    font-size: 90%;
+    @media (min-width: $screen-md-min) {
+      font-size: 90%;
+    }
     padding-top: 0.8em;
     margin-top: 1em;
     border-top: 1px solid lighten($aside-color, 15%);
