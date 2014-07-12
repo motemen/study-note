@@ -25,19 +25,21 @@ h1, h2, h3 {
 
 h1 {
     margin-bottom: 1em;
-    font-size: 250%;
-    color: #777;
+    font-size: 350%;
+    color: #555;
     line-height: 1.6;
+    font-family: "Roboto Slab";
 }
 
 h2 {
+  color: #454589;
   border-bottom: 1px solid #DDD;
   padding-bottom: 0.3em;
   margin-bottom: 0.5em;
 }
 
 h3 {
-  color: #555;
+  color: #777;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -68,6 +70,7 @@ article {
 }
 
 $aside-color: #334;
+$aside-link-color: #CCF;
 
 .sitemap {
   font-size: 110%;
@@ -78,6 +81,14 @@ aside {
   @include make-md-column-pull($content-flex);
   background-color: $aside-color;
   padding: $padding-top 4%;
+
+  a {
+    color: $aside-link-color;
+
+    &:hover {
+      color: lighten($aside-link-color, 5%);
+    }
+  }
 
   @media (min-width: $screen-md-min) {
     position: fixed;
@@ -96,7 +107,7 @@ aside {
 
     font-size: 110%;
     font-weight: normal;
-    color: #AAA;
+    color: #CCC;
     line-height: 1.5;
   }
 
