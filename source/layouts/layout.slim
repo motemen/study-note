@@ -26,6 +26,11 @@ html
     #container
       article#content
         == yield
+        nav.pager
+          - if res = prev_resource
+            == link_to "≪ #{res.metadata[:page]['title']}", "/#{res.path}", rel: 'prev'
+          - if res = next_resource
+            == link_to "#{res.metadata[:page]['title']} ≫", "/#{res.path}", rel: 'next'
       aside
         - if textbook
           .textbook

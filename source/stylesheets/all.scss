@@ -51,6 +51,10 @@ li > p {
   margin: 0;
 }
 
+a:active {
+  color: #E44;
+}
+
 #container {
   @include make-row;
   margin: 0;
@@ -117,6 +121,11 @@ aside {
     padding-top: 0.8em;
     margin-top: 1em;
     border-top: 1px solid lighten($aside-color, 15%);
+
+    ul {
+      padding-left: 1em;
+      margin-left: 0;
+    }
   }
 
   .textbook {
@@ -164,4 +173,10 @@ dd {
   margin: 1em 0;
   border: 1px solid #DDD;
   padding: 1em;
+}
+
+.pager {
+  a + a {
+    margin-left: 1em;
+  }
 }
