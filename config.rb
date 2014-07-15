@@ -8,8 +8,6 @@ set :images_dir, 'images'
 
 config[:file_watcher_ignore] << /\.sw.$/
 
-set :asciidoc_attributes, %w(sectanchors)
-
 set :relative_links, true
 activate :relative_assets
 

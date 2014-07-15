@@ -44,8 +44,7 @@ html
           - each_dir do |dir,resources|
             li
               strong
-                a href="/#{dir}/"
-                  = data.textbooks[dir]['title']
+                == link_to data.textbooks[dir]['title'], "/#{dir}/index.html"
               ul
                 - resources.each do |res|
                   li
