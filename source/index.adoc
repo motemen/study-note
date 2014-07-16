@@ -1,0 +1,3 @@
+= study note
+
+* link:./Types-and-Programming-Languages/[Types and Programming Languages]
