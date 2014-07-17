@@ -1,0 +1,5 @@
+http://motemen.github.io/study-note/
+http://motemen.github.io/study-note/Types-and-Programming-Languages/01_Introduction/
+http://motemen.github.io/study-note/Types-and-Programming-Languages/03_Untyped-Arithmetic-Expressions/
+http://motemen.github.io/study-note/Types-and-Programming-Languages/05_The-Untyped-Lambda-Calculus/
+http://motemen.github.io/study-note/Types-and-Programming-Languages/
