@@ -1,0 +1,3 @@
+<% sitemap.resources.select { |res| /\.html$/ === res.path } .each do |res| %>
+http://motemen.github.io/study-note/<%= res.destination_path.sub(/\bindex\.html$/, '') %>
+<% end %>
