@@ -1,4 +1,4 @@
-= 5. The Untyped Lambda-Calclus
+= 5. The Untyped Lambda-Calculus
 :math: latexmath
 
 型なしラムダ計算。link:03_Untyped-Arithmetic-Expressions.html[3章]で簡単な言語を設計したが、これをさらにラムダ計算という枠組みに落とし込むことができる。実のところ複雑なプログラミング言語も、その本質をついたラムダ計算という小さな言語で表し、理解することができる。
