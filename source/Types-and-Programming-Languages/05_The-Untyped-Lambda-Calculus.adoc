@@ -28,11 +28,36 @@ math:[[x \mapsto t_2\]t_{12}] とかいうよくわからん記法が出てき�
 
 === Ex. 5.2.4
 
-+plus+, +times+ と定義してきたところで、累乗を定義する。TBD
++plus+, +times+ と定義してきたところで、冪乗を定義する。
+
+[math]
+++++
+pow = λm.λn.n \; (\mathrm{times} \; m) \; c_1
+++++
 
 === Ex. 5.2.8
 
-リスト +[x,y,z]+ を +λc. λn. c x (c y (c z n))+ という式で表すことにするとき、+nil+, +isnil+, +head+, +tail+ はそれぞれどうなるか。TBD
+リスト +[x,y,z]+ を +λc. λn. c x (c y (c z n))+ という式で表すことにするとき、+nil+, +isnil+, +head+, +tail+ はそれぞれどうなるか。
+
+[math]
+++++
+nil = λ c.λ n.n \\
+cons = λ x.λ xs.λ c.λ n.c \; x \; (xs \; c \; n) \\
+head = λ xs.xs \; \mathrm{tru} \; \mathrm{tru}
+++++
+
+http://motemen.github.io/lambda-calculator/untyped.html?s=call-by-value#(%5Cxs.xs%20$tru%20$tru)%20(%5Cc.%5Cn.c%20(%5CA.A)%20(c%20(%5CB.B)%20n))[head の確認]（math:[head \; [A,B\] \longrightarrow^* A]）
+
++tail+ はちょっと工夫がいる。テキストの +pred+ をそのまま真似すると:
+
+[math]
+++++
+nn = \mathrm{pair} \; \mathrm{nil} \; \mathrm{nil} \\
+cc = λ x.λ xs.\mathrm{pair} \; (\mathrm{snd} \; xs) \; (\mathrm{cons} \; x \; (\mathrm{snd} \; xs)) \\
+tail = λ xs.\mathrm{fst} \; (xs \; cc \; nn)
+++++
+
+http://motemen.github.io/lambda-calculator/untyped.html?s=call-by-value#(%5Cxs.$fst%20(xs%20(%5Cx.%5Cxs.$pair%20($snd%20xs)%20((%5Cx.%5Cxs.%5Cc.%5Cn.c%20x%20(xs%20c%20n))%20x%20($snd%20xs)))%20($pair%20(%5Cc.%5Cn.n)%20(%5Cc.%5Cn.n))))%20(%5Cc.%5Cn.c%20(%5CA.A)%20(c%20(%5CB.B)%20n))[tail の確認]（math:[tail \; [A,B\] \longrightarrow^* [B\]]）
 
 === Enriching the Calculus
 
@@ -42,7 +67,7 @@ math:[[x \mapsto t_2\]t_{12}] とかいうよくわからん記法が出てき�
 
 [math]
 ++++
-realnat = \lambda m. m \; \mathrm{succ} \; 0
+realnat = λ m. m \; \mathrm{succ} \; 0
 ++++
 
 と定義することはできない。文法的に +succ+ は何かに適用する形でしか存在しえないからだ。
