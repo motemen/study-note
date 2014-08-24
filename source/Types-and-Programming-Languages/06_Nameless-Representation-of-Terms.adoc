@@ -1,6 +1,16 @@
 = 6. Nameless Representation of Terms
 :math: latexmath
 
-link:../05_The-Untyped-Lambda-Calculus/[5章]で束縛変数の名前は自由に書き換えてよいという話をしたけれど、さてそれをどうすれば実現できるか？　という話。人間がこれに取り組むのであれば直感によって新たな名前を考案すればよいが、とうぜん形式的に定義したい。
+link:../05_The-Untyped-Lambda-Calculus/[5章]で束縛変数の名前は自由に書き換えてよいという話をしたけれど、さてそれをどうすれば実現できるか？　という話。人間がこれに取り組むのであれば直感によって新たな名前を考案すればよいが、もちろんここの手順を厳密に定義したい。
 
-この章では、項から変数の名前を取り去った形に項を正規化することで、そもそも名前の書き換えが不要である状態にするという方法を採る。
+いろいろ方法は挙げられているけれど、この章では、項から変数の名前を取り去った形に項を正規化することで、そもそも名前の書き換えを不要にする、という方法を採る。
+
+.removenames
+[math]
+++++
+\begin{eqnarray}
+removenames_\Gamma (x) \; & =& \Gamma(x) \\
+removenames_\Gamma (t_1 \; t_2) \; & =& removenames_\Gamma(t_1) \; removenames_\Gamma(t_2) \\
+removenames_\Gamma (λx.t) \; & =& λ.removenames_{\Gamma'}(t) \\ && \; \mathrm{where} \; \Gamma' = \{ 0 \mapsto x, 1 \mapsto \Gamma(0), \dots \}
+\end{eqnarray}
+++++
