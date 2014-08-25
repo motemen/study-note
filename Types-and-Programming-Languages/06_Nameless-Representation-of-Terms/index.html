@@ -1,9 +1,40 @@
 <!DOCTYPE html><html><head><title>6. Nameless Representation of Terms - Types and Programming Languages</title><meta content="width=device-width" name="viewport" /><link href="../../stylesheets/all.css" rel="stylesheet" type="text/css" /><script type="text/x-mathjax-config">MathJax.Hub.Config({  tex2jax: {    inlineMath: [["\\(", "\\)"]],    displayMath: [["\\[", "\\]"]],    ignoreClass: "nomath|nolatexmath"  },  asciimath2jax: {    delimiters: [["\\$", "\\$"]],    ignoreClass: "nomath|noasciimath"  }});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="text/javascript"></script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:400,700" rel="stylesheet" type="text/css" /><script type="text/javascript">document.addEventListener('DOMContentLoaded', MathJax.Hub.TypeSet)</script></head><body><div id="container"><article id="content"><h1>6. Nameless Representation of Terms</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p><a href="../05_The-Untyped-Lambda-Calculus/">5章</a>で束縛変数の名前は自由に書き換えてよいという話をしたけれど、さてそれをどうすれば実現できるか？　という話。人間がこれに取り組むのであれば直感によって新たな名前を考案すればよいが、とうぜん形式的に定義したい。</p>
+<p><a href="../05_The-Untyped-Lambda-Calculus/">5章</a>で束縛変数の名前は自由に書き換えてよいという話をしたけれど、さてそれをどうすれば実現できるか？　という話。人間がこれに取り組むのであれば直感によって新たな名前を考案すればよいが、もちろんここの手順を厳密に定義したい。</p>
 </div>
 <div class="paragraph">
-<p>この章では、項から変数の名前を取り去った形に項を正規化することで、そもそも名前の書き換えが不要である状態にするという方法を採る。</p>
+<p>いろいろ方法は挙げられているけれど、この章では、項から変数の名前を取り去った形に項を正規化することで、そもそも名前の書き換えを不要にする、という方法を採る。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_1_terms_and_contexts">6.1 Terms and Contexts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De Brujin の方法では、束縛変数がそれから外側に数えて何番目のλによって導入されたか、という番号で表す（\(λ.λ.1 (0 1)\) など）。そうして表され名前なしとなった項を De Brujin Term、番号を De Brujin Index と呼ぶ。</p>
+</div>
+<div class="paragraph">
+<p>自由変数を扱えるようにするために、<strong>naming context</strong> \(\Gamma\) をいうのを導入する。これは変数名から de Brujin index への一対一の対応である。</p>
+</div>
+<div class="sect2">
+<h3 id="_ex_6_1_5">Ex. 6.1.5</h3>
+<div class="paragraph">
+<p>項を無名化する \(removenames\) と無名の項に名前をつける \(restorenames\) を定義する。</p>
+</div>
+<div class="mathblock">
+<div class="title">removenames</div>
+<div class="content">
+\[\begin{eqnarray}
+removenames_\Gamma (x) \; &amp;=&amp; \Gamma(x) \\
+removenames_\Gamma (t_1 \; t_2) \; &amp;=&amp; removenames_\Gamma(t_1) \; removenames_\Gamma(t_2) \\
+removenames_\Gamma (λx.t) \; &amp;=&amp; λ.removenames_{\Gamma'}(t) \\ &amp;&amp; \; \mathrm{where} \; \Gamma' = \{ 0 \mapsto x, 1 \mapsto \Gamma(0), \dots \}
+\end{eqnarray}\]
+</div>
+</div>
+</div>
+</div>
 </div><nav class="pager"><a rel="prev" href="../05_The-Untyped-Lambda-Calculus/">≪ 5. The Untyped Lambda-Calculus</a></nav><div id="comments-container"><div id="disqus_thread"></div><script type="text/javascript">var disqus_shortname = 'motemen-studynote'; // required: replace example with your forum shortname
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
