@@ -5,12 +5,37 @@ link:../05_The-Untyped-Lambda-Calculus/[5章]で束縛変数の名前は自由�
 
 いろいろ方法は挙げられているけれど、この章では、項から変数の名前を取り去った形に項を正規化することで、そもそも名前の書き換えを不要にする、という方法を採る。
 
+== 6.1 Terms and Contexts
+
+De Brujin の方法では、束縛変数がそれから外側に数えて何番目のλによって導入されたか、という番号で表す（math:[λ.λ.1 (0 1)] など）。そうして表され名前なしとなった項を De Brujin Term、番号を De Brujin Index と呼ぶ。
+
+// === Def. 6.1.2
+// 
+// 項の定義。ひとつの集合ではなく、項に含まれる自由変数の数をインデックスとする？　族を定義している。これがどう効いてくるのか分からないので、様子見。
+
+自由変数を扱えるようにするために、**naming context** math:[\Gamma] をいうのを導入する。これは変数名から de Brujin index への一対一の対応である。
+
+=== Ex. 6.1.5
+
+項を無名化する math:[removenames] と無名の項に名前をつける math:[restorenames] を定義する。
+
 .removenames
 [math]
 ++++
 \begin{eqnarray}
-removenames_\Gamma (x) \; & =& \Gamma(x) \\
-removenames_\Gamma (t_1 \; t_2) \; & =& removenames_\Gamma(t_1) \; removenames_\Gamma(t_2) \\
-removenames_\Gamma (λx.t) \; & =& λ.removenames_{\Gamma'}(t) \\ && \; \mathrm{where} \; \Gamma' = \{ 0 \mapsto x, 1 \mapsto \Gamma(0), \dots \}
+removenames_\Gamma (x) \; &=& \Gamma(x) \\
+removenames_\Gamma (t_1 \; t_2) \; &=& removenames_\Gamma(t_1) \; removenames_\Gamma(t_2) \\
+removenames_\Gamma (λx.t) \; &=& λ.removenames_{\Gamma'}(t) \\ && \; \mathrm{where} \; \Gamma' = \{ 0 \mapsto x, 1 \mapsto \Gamma(0), \dots \}
 \end{eqnarray}
 ++++
+
+// .restorenames
+// [math]
+// ++++
+// \begin{eqnarray}
+// restorenames_\Gamma (n) \; &=& \Gamma^{-1} (n) \\
+// restorenames_\Gamma (n \; m) \; &=& restorenames_\Gamma(n) \; restorenames_\Gamma(m) \\
+// restorenames_\Gamma (λ.t) \; &=& restorenames_\Gamma(n) \; restorenames_\Gamma(m) \\
+//                              & & \mathrm{where} \; \Gamma' = ...
+// \end{eqnarray}
+// ++++
