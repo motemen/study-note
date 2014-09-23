@@ -1,7 +1,7 @@
 = 6. Nameless Representation of Terms
 :math: latexmath
 
-link:../05_The-Untyped-Lambda-Calculus/[5章]で束縛変数の名前は自由に書き換えてよいという話をしたけれど、さてそれをどうすれば実現できるか？　という話。人間がこれに取り組むのであれば直感によって新たな名前を考案すればよいが、もちろんここの手順を厳密に定義したい。
+link:../05_The-Untyped-Lambda-Calculus/[5章 The Untyped Lambda-Calculus]で束縛変数の名前は自由に書き換えてよいという話をしたけれど、さてそれをどうすれば実現できるか？　という話。人間がこれに取り組むのであれば直感によって新たな名前を考案すればよいが、もちろんここの手順を厳密に定義したい。
 
 いろいろ方法は挙げられているけれど、この章では、項から変数の名前を取り去った形に項を正規化することで、そもそも名前の書き換えを不要にする、という方法を採る。
 
@@ -13,11 +13,11 @@ De Brujin の方法では、束縛変数がそれから外側に数えて何番�
 // 
 // 項の定義。ひとつの集合ではなく、項に含まれる自由変数の数をインデックスとする？　族を定義している。これがどう効いてくるのか分からないので、様子見。
 
-自由変数を扱えるようにするために、**naming context** math:[\Gamma] をいうのを導入する。これは変数名から de Brujin index への一対一の対応である。
+自由変数を扱えるようにするために、**naming context** math:[\Gamma] というものを導入する。これは変数名から de Brujin index への対応である。
 
 === Ex. 6.1.5
 
-項を無名化する math:[removenames] と無名の項に名前をつける math:[restorenames] を定義する。
+項を無名化する math:[removenames] と名前なし項に名前をつける math:[restorenames] を定義する。例によって工夫がいるのはラムダ抽象のパート。restorenames を定義するには、ラムダ抽象で束縛される変数名を作り出す操作が必要になる。ここではあり得る変数名の集合が順序付けられていて、math:[\Gamma] 中の変数名が互いに異なる［この条件が何に効くのかよくわからない］と仮定して、math:[\Gamma] の定義域に含まれていない変数名を選び出す、という操作が可能だということにしてよい。
 
 .removenames
 [math]
@@ -25,17 +25,40 @@ De Brujin の方法では、束縛変数がそれから外側に数えて何番�
 \begin{eqnarray}
 removenames_\Gamma (x) \; &=& \Gamma(x) \\
 removenames_\Gamma (t_1 \; t_2) \; &=& removenames_\Gamma(t_1) \; removenames_\Gamma(t_2) \\
-removenames_\Gamma (λx.t) \; &=& λ.removenames_{\Gamma'}(t) \\ && \; \mathrm{where} \; \Gamma' = \{ 0 \mapsto x, 1 \mapsto \Gamma(0), \dots \}
+removenames_\Gamma (λx.t) \; &=& λ.removenames_{\Gamma'}(t) \\ && \; \mathrm{where} \; \Gamma' = \{ x \mapsto 0, \Gamma(0) \mapsto 1, \dots \}
 \end{eqnarray}
 ++++
 
-// .restorenames
-// [math]
-// ++++
-// \begin{eqnarray}
-// restorenames_\Gamma (n) \; &=& \Gamma^{-1} (n) \\
-// restorenames_\Gamma (n \; m) \; &=& restorenames_\Gamma(n) \; restorenames_\Gamma(m) \\
-// restorenames_\Gamma (λ.t) \; &=& restorenames_\Gamma(n) \; restorenames_\Gamma(m) \\
-//                              & & \mathrm{where} \; \Gamma' = ...
-// \end{eqnarray}
-// ++++
+.restorenames
+[math]
+++++
+\begin{eqnarray}
+restorenames_\Gamma (n) \; &=& \Gamma^{-1} (n) \\
+restorenames_\Gamma (n \; m) \; &=& restorenames_\Gamma(n) \; restorenames_\Gamma(m) \\
+restorenames_\Gamma (λ.t) \; &=& λx.restorenames_{\Gamma'}(t) \\
+                             & & \mathrm{where} \; x \not \in \mathrm{dom}(\Gamma) \\ && \Gamma' = \{ x \mapsto 0, \Gamma(0) \mapsto 1, \dots \}
+\end{eqnarray}
+++++
+
+== 6.2 Shifting and Substitution
+
+次は書き換え math:[[k \mapsto s\] t] を名前なし項において定義する。書き換えがラムダ抽象の中に及ぶときには、書き換え先の項を包むλの数が1だけ増えるので、自由変数のインデックスにも1を加えてやる（1だけシフトする）必要がある。
+例えば、math:[[1 \mapsto s\](λ. 2)] （math:[[x \mapsto s\](λy.x)]）では、書き換え後の math:[s] はそれを包むλの数が1だけ多い。
+
+ただし束縛変数のことを考えると、無条件にインデックスをシフトさせることはできない。
+例えば、math:[s = 2 \; (λ.0)] （math:[s = z \; (λw.w)]） のうち `2` をシフトするのはよいが `0` をシフトするとおかしい。
+
+結局シフト関数 math:[↑^d_c(-)] は「インデックスにいくつだけ加えるか」と「いくつ未満のインデックスはシフトしないか」の2つのパラメータを持つことになる。
+
+=== Ex. 6.2.8
+
+名前なし項における書き換えの定義は、名前ありの項における書き換えの定義と一致していなければいけない。(1) そのために示されるべき定理はなにか？ (2) 証明せよ。
+
+. ある書き換えを行ってから無名化した時と、無名化してから書き換えをおこなった時とで同じ結果が得られること。
+. 省略。
+
+== 6.3 Evaluation
+
+名前なし項の評価をおこなえるようにするにはベータ簡約のルールを新たに決めればよい。今回は簡約後にλの数が減るので、インデックスを減らす必要がある。先ほどのシフト関数が math:[↑^{-1}] という形でそのまま利用できる。
+
+math:[(λ.1 \; 0 \; 2) \; (λ.0)] は math:[0 \; (λ.0) \; 1] に簡約される。math:[1\; (λ.0) \; 2] でないことに注意。
