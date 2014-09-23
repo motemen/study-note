@@ -6814,14 +6814,19 @@ dd {
   padding: 0.5em 0;
   margin: 1em 0;
   background-color: #F7F7F7; }
+  /* line 174, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+  .mathblock .title {
+    margin-left: 1em;
+    font-weight: bold;
+    text-decoration: underline; }
 
-/* line 179, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 184, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 .exampleblock {
   font-size: 95%;
   margin: 1em 0;
   border: 1px solid #DDD;
   padding: 1em; }
 
-/* line 187, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
+/* line 192, /Users/motemen/.ghq/github.com/motemen/study-note/source/stylesheets/all.scss */
 .pager a + a {
   margin-left: 1em; }
